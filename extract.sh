@@ -11,7 +11,7 @@ if [[ -z "$PACKAGE" || -z "$PATTERN" ]] ; then
   echo
   echo "Usage: $0 package_file file_pattern"
   echo
-  echo "Example: $ $0 ./libc6_2.11.1-0ubuntu7.19_amd64.deb 'libc-*.so'"
+  echo "Example: $ $0 ./libc6_2.11.1-0ubuntu7.19_amd64.deb '*libc[^a-zA-Z]*so*'"
   echo "         ubuntu/libc6_2.19-0ubuntu6.4_amd64/lib/x86_64-linux-gnu/libc-2.19.so"
   exit
 fi
@@ -36,9 +36,9 @@ cd $TEMP
 ar x "$PACKAGE"
 tar -xzf data.tar.*
 tar -xzf control.tar.*
-PACKAGE=`grep '^Package: ' control | sed 's/Package: //g'`
-VERSION=`grep '^Version: ' control | sed 's/Version: //g'`
-ARCHITECTURE=`grep '^Architecture: ' control | sed 's/Architecture: //g'`
+PACKAGE=`grep -i '^Package: ' control | sed 's/[^:]*: //g'`
+VERSION=`grep -i '^Version: ' control | sed 's/[^:]*: //g'`
+ARCHITECTURE=`grep -i '^Architecture: ' control | sed 's/[^:]*: //g'`
 DISTRO=`if [[ "$VERSION" =~ ubuntu ]] ; then echo ubuntu ; else echo debian ; fi`
 TARGET_DIR="${DISTRO}/${PACKAGE}_${VERSION}_${ARCHITECTURE}"
 cd ..
