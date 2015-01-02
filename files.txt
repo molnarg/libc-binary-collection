@@ -11,7 +11,6 @@ debian/libc0.1_2.13-38+deb7u6_kfreebsd-i386/lib/i386-kfreebsd-gnu/libc-2.13.so
 debian/libc0.1_2.19-13_kfreebsd-amd64/lib/x86_64-kfreebsd-gnu/libc-2.19.so
 debian/libc0.1_2.19-13_kfreebsd-i386/lib/i386-kfreebsd-gnu/libc-2.19.so
 debian/libc0.3_2.19-12_hurd-i386/lib/i386-gnu/libc-2.19.so
-debian/libc4_4.6.27-15_i386/lib/libc.so.4.6.27
 debian/libc5_5.3.12-3_sparc/lib/libc.so.5.3.12
 debian/libc5_5.4.13-1_i386/lib/libc.so.5.4.13
 debian/libc5_5.4.33-6_i386/lib/libc.so.5.4.33
