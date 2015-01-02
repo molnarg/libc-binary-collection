@@ -8,7 +8,7 @@ import subprocess
 from distutils.spawn import find_executable
 
 so_file = sys.argv[1]
-csv_file = sys.argv[2]
+json_file = sys.argv[2]
 
 def symbols(file):
   try:
@@ -27,7 +27,8 @@ def symbols(file):
 def append_symbols_to_json(so_file, json_file):
   if os.path.exists(json_file):
     file = open(json_file, 'r+')
-    file.seek(-2, 2)
+    file.seek(-3, 2)
+    file.write(',\n')
   else:
     file = open(json_file, 'w')
     file.write('{\n')
@@ -38,5 +39,5 @@ if not os.path.isfile(so_file):
   print 'File not found: %s' % so_file
   sys.exit()
 
-append_symbols_to_json(so_file, csv_file)
+append_symbols_to_json(so_file, json_file)
 
