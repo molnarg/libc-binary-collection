@@ -24,9 +24,13 @@ def identify_libc(**kwargs):
             known_symbol_names = known_symbols.keys()
             first = known_symbol_names[0]
             if len(known_symbol_names) > 1:
+                ok = True
                 for other in known_symbol_names[1:]:
                     if known_symbols[first] - known_symbols[other] != libc_symbols[first] - libc_symbols[other]:
-                        continue
+                        ok = False
+                        break
+                if not ok:
+                    continue
             # Yielding results
             offset = known_symbols[first] - libc_symbols[first]
             found_symbols = {symbol: libc_symbols[symbol] + offset for symbol in query_symbols}
