@@ -8,6 +8,15 @@ alignment = 4096
 db = json.loads(open('symbols.json').read())
 
 def identify_libc(**kwargs):
+    """Identifies the used libc version based on known symbol addresses.
+
+    Example usage:
+    > for libc, symbols in identify_libc(main_call_site=0xf7602a63, printf=None):
+          print symbols, libc
+    {'printf':4150483888} ubuntu/libc6-i386_2.19-0ubuntu6.3_amd64/lib32/libc-2.19.so
+    {'printf':4150483888} ubuntu/libc6-i386_2.19-0ubuntu6.4_amd64/lib32/libc-2.19.so
+    ...
+    """
     global db
     query_symbols = filter(lambda k: kwargs[k] is None, kwargs.keys())
     known_symbols = {key: kwargs[key] for key in kwargs if key not in query_symbols}
