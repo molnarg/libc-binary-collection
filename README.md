@@ -37,6 +37,13 @@ system=0x00007f8f31abe530 ubuntu/libc6_2.19-0ubuntu6.4_amd64/lib/x86_64-linux-gn
 $ wget http://gabor.molnar.es/libc/ubuntu/libc6_2.19-0ubuntu6.3_amd64/lib/x86_64-linux-gnu/libc-2.19.so
 ```
 
+How does it work?
+-----------------
+
+The last 12 bit of the addresses are constant even when using ASLR. These can be used to fingerprint
+the used libc version. When multiple symbols are specified, the difference between symbols are also
+used for fingerprinting.
+
 Symbols
 -------
 
@@ -46,11 +53,11 @@ is extracted dynamically, and only available for certain libc releases. If you s
 on the command line, you'll only get results where this symbol is defined. This useful when it is
 possible to leak addresses from the stack since this address is always there.
 
-Libc versions
--------------
+Libc versions in this collection
+--------------------------------
 
 The collection is far from complete. Current files are from [Ubuntu Launchpad](https://launchpad.net/ubuntu/)
-and [archive.debian.org](http://archive.debian.org/). Feel free to contribute missing packages.
+and [archive.debian.org](http://archive.debian.org/). Feel free to contribute missing versions.
 
 License
 -------
