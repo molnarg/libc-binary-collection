@@ -40,9 +40,9 @@ $ wget http://gabor.molnar.es/libc/ubuntu/libc6_2.19-0ubuntu6.3_amd64/lib/x86_64
 How does it work?
 -----------------
 
-The last 12 bit of the addresses are constant even when using ASLR. These can be used to fingerprint
-the used libc version. When multiple symbols are specified, the difference between symbols are also
-used for fingerprinting.
+The last 12 bits of the addresses are constant even when using ASLR (because of the alignment to page
+boundary). These can be used to fingerprint the used libc version. When multiple symbols are specified,
+the difference between symbols are also used for fingerprinting.
 
 Symbols
 -------
