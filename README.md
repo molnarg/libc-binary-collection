@@ -57,7 +57,8 @@ Libc versions in this collection
 --------------------------------
 
 The collection is far from complete. Current files are from [Ubuntu Launchpad](https://launchpad.net/ubuntu/)
-and [archive.debian.org](http://archive.debian.org/). Feel free to contribute missing versions.
+and [archive.debian.org](http://archive.debian.org/). There are currently 1293 different libc builds in
+this repo. Feel free to contribute missing versions.
 
 License
 -------
