@@ -3,9 +3,10 @@
 import argparse
 import ast
 import json
+import os
 
 alignment = 4096
-db = json.loads(open('symbols.json').read())
+db = json.loads(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'symbols.json')).read())
 
 def identify_libc(**kwargs):
     """Identifies the used libc version based on known symbol addresses.
