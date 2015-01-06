@@ -6,7 +6,8 @@ import json
 import os
 
 alignment = 4096
-db = json.loads(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'symbols.json')).read())
+#db = json.loads(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'symbols.json')).read())
+db = None
 
 def identify_libc(**kwargs):
     """Identifies the used libc version based on known symbol addresses.
@@ -19,6 +20,9 @@ def identify_libc(**kwargs):
     ...
     """
     global db
+    if db is None:
+        current_dir = os.path.dirname(os.path.realpath(__file__))
+        db = json.loads(open(os.path.join(current_dir, 'symbols.json')).read())
     query_symbols = filter(lambda k: kwargs[k] is None, kwargs.keys())
     known_symbols = {key: kwargs[key] for key in kwargs if key not in query_symbols}
     for libc in db:
