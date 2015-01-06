@@ -6,7 +6,6 @@ import json
 import os
 
 alignment = 4096
-#db = json.loads(open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'symbols.json')).read())
 db = None
 
 def identify_libc(**kwargs):
@@ -47,7 +46,7 @@ def identify_libc(**kwargs):
                     continue
             # Yielding results
             offset = known_symbols[first] - libc_symbols[first]
-            found_symbols = {symbol: libc_symbols[symbol] + offset for symbol in query_symbols}
+            found_symbols = {symbol: (libc_symbols[symbol] + offset if symbol in libc_symbols else None) for symbol in query_symbols}
             yield libc, found_symbols
 
 if __name__ == "__main__":
@@ -64,6 +63,6 @@ if __name__ == "__main__":
 
     for libc, identified_symbols in identify_libc(**symbols):
         for symbol in identified_symbols:
-            print '%s=0x%016x' % (symbol, identified_symbols[symbol]),
+            print '%s=0x%016x' % (symbol, identified_symbols[symbol] or 0),
         print libc
 
