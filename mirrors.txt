@@ -1,1 +1,1 @@
-http://gabor.molnar.es/libc/
+http://molnar.es/libc/
