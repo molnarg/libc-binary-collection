@@ -34,7 +34,7 @@ $ ./identify.py main_call_site=0x7f8f31a99ec5 printf=0x7f8f31acc2f0 system=?
 system=0x00007f8f31abe530 ubuntu/libc6_2.19-0ubuntu6.3_amd64/lib/x86_64-linux-gnu/libc-2.19.so
 system=0x00007f8f31abe530 ubuntu/libc6_2.19-0ubuntu6.4_amd64/lib/x86_64-linux-gnu/libc-2.19.so
 
-$ wget http://gabor.molnar.es/libc/ubuntu/libc6_2.19-0ubuntu6.3_amd64/lib/x86_64-linux-gnu/libc-2.19.so
+$ wget http://molnar.es/libc/ubuntu/libc6_2.19-0ubuntu6.3_amd64/lib/x86_64-linux-gnu/libc-2.19.so
 ```
 
 How does it work?
